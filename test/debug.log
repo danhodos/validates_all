@@ -1,0 +1,7 @@
+# Logfile created on Mon May 12 21:05:33 -0500 2008 by /
+  [4;36;1mSQL (0.000437)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: no such table: accounts: DROP TABLE accounts[0m
+  [4;36;1mSQL (0.003120)[0m   [0;1mCREATE TABLE accounts ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "primary_account_holder_id" varchar(255) DEFAULT NULL, "secondary_account_holder_id" varchar(255) DEFAULT NULL, "email_address" varchar(255) DEFAULT NULL, "login_name" varchar(255) DEFAULT NULL, "full_name" varchar(255) DEFAULT NULL) [0m
+  [4;35;1mSQL (0.002431)[0m   [0mCREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.002316)[0m   [0;1mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;35;1mSQL (0.002237)[0m   [0mUPDATE schema_info SET version = 1[0m

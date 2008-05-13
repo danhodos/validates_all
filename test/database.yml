@@ -1,0 +1,15 @@
+sqlite3:
+  :adapter: sqlite3
+  :dbfile: validates_all_test.sqlite3db
+postgresql:
+  :adapter: postgres
+  :username: postgres
+  :password: postgres
+  :database: validates_all_test
+  :min_messages: ERROR
+mysql:
+  :adapter: mysql
+  :host: localhost
+  :username: rails
+  :password:
+  :database: validates_all_test

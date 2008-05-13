@@ -1,0 +1,26 @@
+ValidatesAll
+============
+
+Extends the built-in ActiveRecord Validations to add a "validates_all" method which is similar to "validates_each". This is often useful when wanting to validate one attribute against another or against a set. Example:
+
+  class Person < ActiveRecord::Base
+    validates_all :security_answer_1, :security_answer_2 do |record, attrs, values|
+      message = '#{attrs.to_sentence(:connector => 'or')} must be set'
+      record.errors.add_to_base(message) if attrs.all?(&:blank?)
+    end
+  end
+
+Furthermore, it adds a few validations built on top of "validates_all", including:
+ * "validates_presence_of_one_of" (aliased as "validates_presence_of_either"): encapsulates the pattern where at least one of a set of attributes has to be specified, and
+ * "validates_different": encapsulates the pattern where two specified attributes must be different from each other
+
+Example:
+
+  class Person < ActiveRecord::Base
+    validates_presence_of_either :login_name, :email_address
+    validates_different :password, :old_password
+  end
+  
+See the comments in lib/validates_all.rb for options that can be passed to each of these methods.
+
+Copyright (c) 2007 Dan Hodos, released under the MIT license
