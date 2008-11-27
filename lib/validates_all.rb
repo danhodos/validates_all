@@ -21,13 +21,11 @@ module DanHodos #:nodoc:
           attrs = attrs.flatten
           
           send(validation_method(options[:on] || :save)) do |record|
-            unless options[:if] && !evaluate_condition(options[:if], record)
-              values = attrs.map {|attr| record.send(attr) }
-              yield record, attrs, values
-            end
+            values = attrs.map {|attr| record.send(attr) }
+            yield record, attrs, values
           end
         end
-        
+                
         # Validates that at least one of the specified attributes are not blank (as defined by Object#blank?). 
         # Happens by default on save. Example:
         #
