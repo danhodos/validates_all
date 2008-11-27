@@ -67,10 +67,11 @@ module DanHodos #:nodoc:
           
           validates_all(attrs, configuration) do |record, attributes, values|
             unless configuration[:suppress_on_blanks] && values.all?(&:blank?)
-              record.errors.add_to_base(configuration[:message]) if values.uniq.length == 1
+              record.errors.add_to_base(configuration[:message]) if values.uniq.length != values.length
             end
           end
         end
+        
       end # ClassMethods
     end # ValidatesAll
   end # ActiveRecord
